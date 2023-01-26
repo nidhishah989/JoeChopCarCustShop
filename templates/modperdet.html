@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modify personal detail</title>
+
+     <!--for font of page the link-->
+   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href=" https://fonts.googleapis.com/css?family=Lora">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <!--///////////////////////-->
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <!--show logo for JOECHOP-->
+            <a class ="navbar-brand" href="#">
+                <img src="/static/logo_3.png" width="250px" style="height: fit-content;" alt="logo_image" >
+            </a>
+            <!--button is for mobile applciation page.. to give that three bar line when window go smaller-->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="place-content: space-around; ">
+                <ul class="navbar-nav">
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/customer">Customers</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/employee">Employee</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/management">Management</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>   
+       </div> 
+    
+    <!--form to get the user name validation-->
+    <form action="/modifyempdetail" autocomplete="on" method = "POST" enctype="multipart/form-data" >
+        <h1> LOGIN with Employee ID</h1>
+        <label for="Employee_ID">Employee ID:</label>
+        <input type="text" id="Employee_ID" name="Employee_ID">
+        <button type="submit" formaction="/editemppersdet"> SUBMIT</button>
+        <br>
+     </form>
+
+    <!--form to update the user information-->
+    {% for item in emp %}
+     <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="card card-body">
+            <form action="/updateemp/{{item[0]}}" method="POST">
+              <div class="form-group">
+                <lable for="id"></lable> Employee ID: {{item[0]}} </lable> 
+              </div>
+              <div class="form-group">
+                <lable for="name"></lable> Employee Name: </lable>
+                <br>
+                <input type="text" name="name" value="{{item[1]}}" class="form-control" placeholder="Name"> 
+              </div>
+              <div class="form-group">
+                <lable for="title"></lable> Employee Title: </lable>
+                <br>
+                <input type="text" name="title" value="{{item[2]}}" class="form-control" placeholder="Title">
+              </div>
+              <div class="form-group">
+                <lable for="phone"></lable> Employee Contact no: </lable>
+                <br>
+                <input type="text" name="phone" value="{{item[3]}}" class="form-control" placeholder="Phone">
+              </div>
+              <div class="form-group">
+                <lable for="email"></lable> Employee Email-ID: </lable>
+                <br>
+                <input type="text" name="email" value="{{item[4]}}" class="form-control" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> 
+      {% endfor %}
+</body>
+</html>

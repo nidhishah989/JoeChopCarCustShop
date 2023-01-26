@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updatecustomization</title>
+    
+     <!--for font of page the link-->
+   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href=" https://fonts.googleapis.com/css?family=Lora">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <!--///////////////////////-->
+   <link rel="stylesheet" href="static/css/style.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <!--show logo for JOECHOP-->
+            <a class ="navbar-brand" href="#">
+                <img src="/static/logo_3.png" width="250px" style="height: fit-content;" alt="logo_image" >
+            </a>
+            <!--button is for mobile applciation page.. to give that three bar line when window go smaller-->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="place-content: space-around; ">
+                <ul class="navbar-nav">
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/customer">Customers</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/employee">Employee</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                        <a class="nav-link" href="/management">Management</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>   
+       </div> 
+     
+        <!--form to get the user name validation-->
+    <form action="/viewplan" autocomplete="on" method = "POST" enctype="multipart/form-data" style="background-image: linear-gradient(rgba(108, 136, 187, 0.445), rgba(0, 255, 115, 0.363));margin:auto; max-width:100%;" >
+        <h1> LOGIN with Customer ID</h1>
+        <label for="Customer_ID">Cusotmer ID:</label>
+        <input type="text" id="Customer_ID" name="Customer_ID">
+        <button type="submit" formaction="/viewplan"> SUBMIT</button>
+        <br>
+     </form>
+
+     <!--form to update the user information-->
+     <form  style="background-image: linear-gradient(rgba(108, 187, 161, 0.39), rgba(97, 182, 135, 0.199));margin:auto; max-width:100%;">
+        <h1 style="text-align:center;">CUSTOMIZATION DETAILS:</h1>
+        {% for x in cust_detail %}
+        <div class="row">
+            <div class="col-md-10 offset-md-1" style="font-size: 16px; font-weight: bold;">
+            <div class="card card-body" style="background-image: linear-gradient(rgba(108, 187, 157, 0.26), rgba(0, 217, 255, 0.301));margin:auto; max-width:inherit; box-sizing: border-box;">
+                <form >
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="cust_id"></lable>  Customer ID: <br>{{x[1]}} </lable>
+                 </div>
+                 <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                 background-clip: border-box;
+                 border: 1px solid #ccbe95;
+                 border-radius: .25rem;">
+                    <lable for="plan_id"></lable> Plan ID: <br> {{x[0]}} </lable>  
+                </div>
+                <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+                <h4> Employee Detail: </h4>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="Employeeid"></lable> Employee_ID:<br> {{x[3]}}</lable>
+                </div>
+                {% for a in emp_info %}
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="emp_name"></lable>  Employee Name:<br> {{a[1]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="emp_phone"></lable>  Employee Phonenumber:<br> {{a[3]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="emp_email"></lable>  Employee Email:<br> {{a[4]}} </lable>
+                </div>
+                {% endfor %}
+                {% for y in veh_info %}
+                <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+                <h4> Vehicle Condition Detail: </h4>
+                    <!--VIN-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <lable for="Vin"></lable> VIN Number:<br> {{y[0]}} </lable>
+                    </div>
+                    <!--Make-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                     background-clip: border-box;
+                     border: 1px solid #ccbe95;
+                     border-radius: .25rem;">
+                    <label for="Make"></label> Manufacturer:<br> {{y[1]}} </lable>
+                    </div>
+                    <!--Model-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Model"></label> Model:<br >{{y[2]}} </lable>
+                    </div>
+                    <!--Year-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Year"> </label> Manufacturer Year:<br>{{y[3]}} </lable>
+                    </div>
+                    <!--Engine-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Engine"> </label> Engine:<br> {{y[4]}}</lable>
+                    </div>
+                    <!--Trim-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Trim"> </label> Trim:<br>{{y[5]}} </lable>
+                    </div>
+                    <!--Interior-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Interior"> </label> Interior: <br>{{y[6]}}</lable>
+                    </div>
+                    <!--Exterior-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Exterior"></label>Exterior:<br>{{y[7]}} </lable>
+                    </div>
+                    <!--Body_Condition-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Body_Condition"></label>  Body Condition:<br> {{y[8]}}</lable>
+                    </div>
+                    <!--Frame_Condition-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Frame_Condition"> </label> Frame Condition:<br>{{y[9]}} </lable>
+                    </div>
+                    <!--Interior_Condition-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Interior_Condition"> </label> Interior_Condition:<br>{{y[10]}}</lable>
+                     </div>
+                    <!--Engine_Condition-->
+                    <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                    background-clip: border-box;
+                    border: 1px solid #ccbe95;
+                    border-radius: .25rem;">
+                    <label for="Engine_Condition"> </label> Engine_Condition:<br>{{y[11]}}</lable>
+                    </div>
+
+                {% endfor %} 
+      
+                <!-- show customization plan here-->
+                {% for item in cust_plan %}
+                <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+                <h4> Customization Plan Detail: </h4>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="Totalprice"></lable> Total Estimation price:<br> {{item[1]}}</lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="deposit_amount"></lable> Deposited Amount:<br>{{item[2]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="StartDate"></lable> Start Date:<br>{{item[3]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="Esti_deliver"></lable> Estimated Delivery Date:<br>{{item[4]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                     <lable for="subtotal_price"></lable> Subtoal Price: <br>{{item[5]}}</lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                     <lable for="tax"></lable> Tax amount: <br>{{item[6]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="amount_due"></lable> Amount Due:<br>{{item[7]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                    <lable for="payment_method"></lable> Payment Method:<br> {{item[8]}} </lable>
+                </div>
+                <div class="card" style="background-color: rgb(175 197 220 / 50%);
+                background-clip: border-box;
+                border: 1px solid #ccbe95;
+                border-radius: .25rem;">
+                     <lable for="pay_date"></lable> Final Payment Date:<br> {{item[9]}}</lable>
+                </div>
+            {% endfor %}
+                </form>
+            </div>
+            </div>
+            </div>
+        {% endfor %}   
+    </form>
+</body>
+</html>

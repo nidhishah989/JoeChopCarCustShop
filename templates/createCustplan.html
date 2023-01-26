@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customization plan creation page</title>
+    <!--for font of page the link-->
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" https://fonts.googleapis.com/css?family=Lora">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--///////////////////////-->
+    <link rel="stylesheet" href="static/css/style.min.css">
+</head>
+<body >
+  <div class="container-fluid">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <!--show logo for JOECHOP-->
+        <a class ="navbar-brand" href="#">
+            <img src="/static/logo_3.png" width="250px" style="height: fit-content;" alt="logo_image" >
+        </a>
+        <!--button is for mobile applciation page.. to give that three bar line when window go smaller-->
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1" style="place-content: space-around; ">
+            <ul class="navbar-nav">
+                <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                    <a class="nav-link" href="/customer">Customers</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                    <a class="nav-link" href="/employee">Employee</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px; margin-right: 20px;">
+                    <a class="nav-link" href="/management">Management</a>
+                </li>
+            </ul>
+        </div>
+    </nav>   
+   </div> 
+   <div class= "back" style="background-image: linear-gradient(rgba(187, 108, 108, 0.445), rgba(255, 255, 0, 0.363));margin:auto; max-width:600px;">
+    <!--form to get the user name validation-->
+    <form action="/createcustomplan" autocomplete="on" method = "POST" enctype="multipart/form-data" >
+        <h1> LOGIN with Employee ID</h1>
+        <label for="Employee_ID">Employee ID:</label>
+        <input type="text" id="Employee_ID" name="Employee_ID">
+        <button type="submit" formaction="/searchempid"> SUBMIT</button>
+        <br>
+     </form>
+     <div>
+         <h2> Employee Information </h2>
+            {% for item in data %}
+                <tr>
+                    <td> Employee ID: {{item[0]}} </td>
+                    </br>
+                    <td> Employee Name: {{item[1]}} </td>
+                    <br>
+                    <td> Employee Title: {{item[2]}} </td>
+                    <br>
+                    <td> Employee Phone Number: {{item[3]}} </td>
+                    <br>
+                    <td> Employee Email-Address: {{item[4]}} </td>
+                    <br>
+                </tr>
+            {% endfor %}
+     </div>
+     <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+     <!--form to insert values in customer table-->
+     <form action="/addcustomizationdetail" autocomplete="on" method = "POST" enctype="multipart/form-data">
+
+        <lable for="Employee_ID">Costomization plan Under Employee_ID: </lable>
+        <input type="text" id="Employee_ID" name="Employee_ID">
+        <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+         <!--form to insert values in customer table-->
+        <h1> Cusotmer Infomation: </h1>
+        <!--Customer_ID-->
+       
+        
+        <label for="Customer_ID"> Customer ID:</label>
+        <input type="text" id="Customer_ID" name="Customer_ID">
+        <br>
+         <!--Name-->
+         <label for="Name"> Name:</label>
+        <input type="text" id="Name" name="Name">
+        <br>
+         <!--Phone-->
+         <label for="Phone"> Phone:</label>
+        <input type="text" id="Phone" name="Phone">
+        <br>
+         <!--Email-->
+         <label for="Email"> Email:</label>
+        <input type="text" id="Email" name="Email">
+        <br>
+         <!--Address-->
+         <label for="Address"> Address:</label>
+        <input type="text" id="Address" name="Address">
+        <br>
+         <!--City-->
+         <label for="City"> City:</label>
+        <input type="text" id="City" name="City"> 
+        <br>
+         <!--State-->
+         <label for="State"> State:</label>
+        <input type="text" id="State" name="State">
+        <br>
+         <!--Zip-->
+         <label for="Zip"> Zipcode:</label>
+        <input type="text" id="Zip" name="Zip">
+        <br>
+
+         <!--form to insert values in vehicle table-->
+         <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+        <h1> Customer's Vehicle Infomation: </h1>
+        <!--VIN-->
+        <label for="Vin"> VIN Number:</label>
+        <input type="text" id="Vin" name="Vin">
+        <br>
+         <!--Make-->
+         <label for="Make"> Manufacturer:</label>
+        <input type="text" id="Make" name="Make">
+        <br>
+        <!--Model-->
+        <label for="Model"> Model:</label>
+        <input type="text" id="Model" name="Model">
+        <br>
+        <!--Year-->
+        <label for="Year"> Manufacturer Year:</label>
+        <input type="text" id="Year" name="Year">
+        <br>
+         <!--Engine-->
+         <label for="Engine"> Engine:</label>
+        <input type="text" id="Engine" name="Engine">
+        <br>
+         <!--Trim-->
+         <label for="Trim"> Trim:</label>
+         <select id="Trim" name="Trim">
+           <option value="Low">Low</option>
+           <option value="Medium">Medium</option>
+           <option value="High">High</option>
+         </select>
+        <br>
+         <!--Interior-->
+         <label for="Interior"> Interior:</label>
+        <input type="text" id="Interior" name="Interior">
+        <br>
+         <!--Exterior-->
+         <label for="Exterior"> Exterior:</label>
+        <input type="text" id="Exterior" name="Exterior"> 
+        <br>
+         <!--Body_Condition-->
+         <label for="Body_Condition"> Body Condition:</label>
+         <select id="Body_Condition" name="Body_Condition">
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+          </select>
+        <br>
+         <!--Frame_Condition-->
+         <label for="Frame_Condition"> Frame Condition:</label>
+         <select id="Frame_Condition" name="Frame_Condition">
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+          </select>
+        <br>
+        <!--Interior_Condition-->
+        <label for="Interior_Condition"> Interior_Condition:</label>
+         <select id="Interior_Condition" name="Interior_Condition">
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+          </select>
+        <br>
+        <!--Engine_Condition-->
+        <label for="Engine_Condition"> Engine_Condition:</label>
+         <select id="Engine_Condition" name="Engine_Condition">
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+          </select>
+        <br>
+
+         <!--form to insert values in customization plan table-->
+         <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 3px;">
+         <h1> Cusotmization Plan Infomation: </h1>
+         <!--Plan_ID-->
+         <label for="Plan_ID"> Plan ID:</label>
+         <input type="text" id="Plan_ID" name="Plan_ID">
+         <br>
+          <!--Item_ID-->
+          <label for="Item_ID"> Item ID:</label>
+         <input type="text" id="Item_ID" name="Item_ID">
+         <br>
+          <!--Item_name-->
+          <label for="Item_name"> Item Name:</label>
+         <input type="text" id="Item_name" name="Item_name">
+         <br>
+          <!--Item_Description-->
+          <label for="Item_Description"> Item Description:</label>
+         <input type="text" id="Item_Description" name="Item_Description">
+         <br>
+          <!--part_name-->
+          <label for="part_name"> Part Name:</label>
+          <select id=" part_name" name="part_name">
+            <option value="break">Break</option>
+            <option value="front-light">Front-light</option>
+            <option value="back-light">Back-light</option>
+            <option value="engine">Engine</option>
+            <option value="speaker">speaker</option>
+            <option value="interior material"> interior material </option>"
+            <option value="paint">paint color</option>
+          </select>
+         <br>
+          <!--part_quantity-->
+          <label for="part_quantity"> part_quantity:</label>
+         <input type="text" id="part_quantity" name="part_quantity"> 
+         <br>
+          <!--labor_name-->
+          <label for="labor_name"> Labor Task:</label>
+          <select id=" labor_name" name="labor_name">
+            <option value="break change">Break change</option>
+            <option value="break repair">Break Repair</option>
+            <option value="front iight repair">Front-light Repair</option>
+            <option value="back light repair">Back-light Repair</option>
+            <option value="engine change">Engine Change</option>
+            <option value="engine repair">Engine Repair</option>
+            <option value="speaker change">speaker change</option>
+            <option value="interior change"> interior change </option>"
+            <option value="paint">paint car </option>
+          </select>
+         <br>
+            <!--Item_completion_estimation-->
+            <label for="Item_completion_estimation"> Item Estimated completion Date:</label>
+            <input type="date" id="Item_completion_estimation" name="Item_completion_estimation"
+            value="2021-04-22"
+            min="2021-01-01" max="2021-12-31">
+    
+            <br>
+          <!--Estimated_delivery_date-->
+          <label for="Estimated_delivery_date"> Plan Estimated completion Date:</label>
+          <input type="date" id="Estimated_delivery_date" name="Estimated_delivery_date"
+          value="2021-04-22"
+          min="2021-01-01" max="2021-12-31">
+   
+         <br>
+         <br>
+        <br>
+        <button type="submit" style="background-color: rgba(0, 26, 255, 0.377);  border: none; margin-left: 80%; color:black; padding: 1px 3px; text-align: center; text-decoration: none; display:block; margin:auto; font-size: 20px;"> 
+            SUBMIT</button>
+        <br>
+        {% with messages = get_flashed_messages() %}
+            {% if meesages %}
+                {% for message in messages %}
+                    <h2>{{ message}}</h2>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </form>
+  </div>
+</body>
+</html>

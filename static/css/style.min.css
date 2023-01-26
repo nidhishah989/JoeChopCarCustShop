@@ -1,0 +1,32 @@
+.navbar-nav{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+.banner{
+    margin: 0%;
+    padding: 0px;
+}
+
+label{
+    width:240px;
+    display:inline-block;
+    text-align:right;
+}
+
+.card {
+    position: relative;
+    display:block;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgb(175 197 220 / 50%);
+    background-clip: border-box;
+    border: 1px solid #ccbe95;
+    border-radius: .25rem;
+
+}

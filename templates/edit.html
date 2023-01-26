@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/nicepage.css" media="screen">
+<link rel="stylesheet" href="/static/css/management.css" media="screen">
+    <!--<script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>-->
+    <script class="u-script" type="text/javascript" src="/static/css/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.13.2, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+     <!--for font of page the link-->
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" https://fonts.googleapis.com/css?family=Lora">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--///////////////////////-->
+<body>
+
+
+
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/update/{{emp.0}}" method="POST">
+          <div class="form-group">
+            <lable for="id"></lable> Employee ID: {{emp[0]}} </lable> 
+          </div>
+          <div class="form-group">
+            <lable for="name"></lable> Name:: </lable>
+            <input type="text" name="name" value="{{emp.1}}" class="form-control" placeholder="Name">
+          </div>
+
+          <div class="form-group">
+            <lable for="title"></lable> Title: </lable>
+            <input type="text" name="title" value="{{emp.2}}" class="form-control" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <lable for="phone"></lable> PHONE NUMBER: </lable>
+            <input type="text" name="phone" value="{{emp.3}}" class="form-control" placeholder="Phone">
+          </div>
+          <div class="form-group">
+            <lable for="email"></lable> E-mail: </lable>
+            <input type="text" name="email" value="{{emp.4}}" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+     
+</body>
+</html>
